@@ -1,76 +1,142 @@
-# banking-system-c-project
-Simple Banking System in C using Binary File Handling and ATM features.
-# banking-system-c-project
-Simple Banking System in C using Binary File Handling and ATM features.
+-----------------------------------------------------
+   BANKING SYSTEM IN C (ATM + BINARY FILE HANDLING)
+   Author: Adarsh Raj
+   AP25110010009
+------------------------------------------------------
+   PROJECT TITLE
+   ===================== 
+BANKING SYSTEM IN C (ATM + BINARY FILE HANDLING)
+ ---------------------
+   PROJECT OVERVIEW
+---------------------- 
+This mini–project is a complete Banking Management System written in C.
+It stores all account information using Binary Files (bank.dat).
 
-Bank Management System (C Program)
+The system includes:
+- Account Creation
+- Secure ATM Login (Account No + PIN)
+- PIN Verification before withdrawal
+- Deposit Money
+- Withdraw Money
+- Check Balance
+- Change PIN
+- Admin Panel (Protected with Admin PIN = 9999)
 
-This project is a simple Bank Management System implemented in the C programming language.
-It allows users to create bank accounts, log in through an ATM interface, and perform various banking operations such as balance inquiry, deposit, withdrawal (with PIN verification), and PIN change.
-An additional admin section allows authorized personnel to view all stored accounts.
+Binary files ensure data is permanent and secure.
 
-📌 Features
-1. Create New Account
-Stores a new customer's account number, name, PIN, and starting balance (0 by default).
-Saves data in a binary file (bank.dat).
+ =====================
+   FEATURES
+ ===================== 
+
+/* --- USER / ATM FEATURES --- */
+1. Create Account
+   - User enters Account Number, Name, PIN
+   - Balance starts from 0
+   - Data stored in bank.dat
 
 2. ATM Login
-Users log in using Account Number + PIN.
-After successful authentication, they can:
-Check balance
-Deposit money
-Withdraw money (with PIN verification)
-Change PIN
-Logout
+   - Requires Account Number + PIN
 
-3. Admin Access
+3. Check Balance
+   - Displays current account balance
 
-Shows all account records.
-Protected by Admin PIN: 9999.
+4. Deposit Money
+   - Adds amount
+   - Updates binary file
 
-4. Data Storage
+5. Withdraw Money
+   - Requires PIN again (security)
+   - Checks sufficient balance
+   - Updates file
 
-Accounts are stored using structures in a binary file.
-Uses fread() and fwrite() for safe reading and writing.
+6. Change PIN
+   - User can update their ATM PIN
 
-📁 Project Structure
+/* --- ADMIN FEATURES --- */
+Admin PIN = 9999
 
-Bank-Management-System/
+Admin can:
+- View all accounts (acc_no, name, pin, balance)
+- This is PIN protected
+
+/* =====================
+   TECHNOLOGY USED
+   ===================== */
+Language     : C  
+Compiler     : GCC / MinGW / Turbo C  
+Storage File : bank.dat (Binary File)  
+OS Support   : Windows / Linux / Mac  
+
+=====================
+   PROGRAM WORKING
+ ===================== 
+
+ --- STRUCTURE USED ---
+struct Account {
+    int acc_no;
+    char name[50];
+    int pin;
+    float balance;
+};
+
+ --- FILE OPERATIONS USED --- 
+fwrite() → Write account data  
+fread()  → Read account data  
+fseek()  → Move inside binary file  
+ftell()  → Get position in file  
+
+File Modes:
+- ab  → Append new account
+- rb  → Read accounts
+- rb+ → Read + Update account
+
+/* =====================
+   PROJECT FILE STRUCTURE
+   ===================== */
+BankingSystemProject/
 │
-├── main.c          # Complete C source code
-├── bank.dat        # Auto-generated after running the program
-├── README.md       # Project documentation
-└── screenshots/    # Screenshots of output (add your images here)
+├── banking_system.c
+├── bank.dat      (auto created on program run)
+├── README.md
+│
+└── screenshots/
 
-🛠 Technologies Used
-C Programming
-File Handling (Binary Files)
-Structures in C
-ATM-Style Menu System
+ =====================
+   HOW TO COMPILE & RUN
+  ===================== 
 
-📸 Screenshots
-Create a folder named screenshots/ and add images such as:
-Program start screen
-Create account
-ATM login
-Deposit / Withdraw
-Admin display
+/* Windows */
+gcc banking_system.c -o bank
+bank.exe
 
-Example filenames:
-
-screenshots/home_menu.png
-screenshots/create_account.png
-screenshots/atm_login.png
-screenshots/withdraw_pin_verification.png
-
-▶ How to Run
-Using GCC
-gcc main.c -o bank
+/* Linux / macOS */
+gcc banking_system.c -o bank
 ./bank
 
-On Windows (MinGW)
-gcc main.c -o bank.exe
-bank.exe
+=====================
+    SCREENSHOTS
+==================== 
+- Home.png
+- Admin_login.png
+- Atm_login.png
+- Deposit_withdrawal.png
+- Pin_change.png
+- create_account.png
+- Pin_change.png
+
+Go to /screenshots folder to see screenshots
+
+=====================
+ FUTURE IMPROVEMENTS
+===================== 
+- PIN hidden input (****)
+- Delete account feature
+- Money transfer between accounts
+- Transaction history
+- Mobile No + OTP
+- GUI version (Python/Java)
+- Encrypted PIN storage
+-------------------------
 
 🔐 Admin PIN
 To view all account records:
@@ -84,3 +150,7 @@ The program automatically creates the file if not found.
 
 📜 License
 This project is created for educational purposes, academic submission, and basic demonstration of file-handling concepts in C.
+
+-------------------------
+   END OF README
+--------------------------
